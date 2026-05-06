@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - تيك أوتو</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+    <!-- مكتبة Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="admin-container">
+    <header class="admin-header">
+        <h1>⚙️ لوحة تحكم <span>المدير</span></h1>
+        <p>إضافة وإدارة قطع الغيار في قاعدة البيانات</p>
+    </header>
+
+    <!-- فورم إضافة المنتج (ظاهرة ومباشرة) -->
+    <section class="form-section">
+        <h2>إضافة قطعة جديدة</h2>
+        <form id="addProductForm">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>اسم القطعة</label>
+                    <input type="text" id="partName" placeholder="مثال: فلتر هواء" required>
+                </div>
+                <div class="input-group">
+                    <label>بلد التصنيع</label>
+                    <input type="text" id="partCountry" placeholder="مثال: ألمانيا" required>
+                </div>
+                <div class="input-group">
+                    <label>الشركة</label>
+                    <input type="text" id="partBrand" placeholder="مثال: بي ام دبليو" required>
+                </div>
+                <div class="input-group">
+                    <label>الموديل المناسب</label>
+                    <input type="text" id="partModel" placeholder="مثال: X5" required>
+                </div>
+                <div class="input-group">
+                    <label>السعر (ج.م)</label>
+                    <input type="number" id="partPrice" placeholder="مثال: 1500" required>
+                </div>
+<!-- استبدل حقل الصور القديم بهذا الكود -->
+<div class="input-group full-width">
+    <label>اختر صور قطعة الغيار (يمكنك اختيار أكثر من صورة)</label>
+    <input type="file" id="partImages" accept="image/*" multiple required>
+</div>
+            </div>
+            <button type="submit" class="submit-btn" id="saveBtn">حفظ في قاعدة البيانات</button>
+        </form>
+    </section>
+
+    <!-- جدول عرض المنتجات للتأكيد -->
+    <section class="table-section">
+        <h2>المنتجات الحالية</h2>
+        <div class="table-responsive">
+            <table id="productsTable">
+<!-- في قسم الجدول، ابحث عن <thead> وقم بتعديله كالتالي -->
+<thead>
+    <tr>
+        <th>كود (ID)</th>
+        <th>اسم القطعة</th>
+        <th>البلد</th>
+        <th>الشركة</th>
+        <th>الموديل</th>
+        <th>السعر</th>
+        <th>الإجراءات</th> <!-- أضفنا هذا العمود -->
+    </tr>
+</thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="6" style="text-align: center;">جاري جلب البيانات...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- ربط ملف الجافاسكريبت الخاص بالداشبورد -->
+<script src="/js/admin.js"></script>
+</body>
+</html>
